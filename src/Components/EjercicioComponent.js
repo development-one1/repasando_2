@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types';
+
 
 export const EjercicioComponent = ({year}) => {
 
@@ -14,6 +16,18 @@ export const EjercicioComponent = ({year}) => {
     setYearNow(yearNow-1);
   }
 
+  const cambiarYear = e => {
+    let dato = parseInt(e.target.value);
+    
+    if(Number.isInteger(dato)){
+      setYearNow(dato);
+    }else{
+      setYearNow(year);
+    }
+
+    
+  }
+
   return (
     <div>
         <h2>Ejercicio con Eventos y UseState</h2>
@@ -25,6 +39,19 @@ export const EjercicioComponent = ({year}) => {
           &nbsp;
           <button onClick={anterior}>ANTERIOR</button>
         </p>
+       
+         <p>Cambiar año:</p>
+        <input 
+          onChange={ cambiarYear } 
+          type='text' 
+          placeholder='Cambia el año'
+          />
     </div>
   )
 }
+
+EjercicioComponent.propTypes = {
+    year: PropTypes.number.isRequired
+}
+
+export default EjercicioComponent;
