@@ -32,3 +32,5 @@ export const MiPrimerEstado = () => {
     </div>
   )
 }
+
+export default MiPrimerEstado;
